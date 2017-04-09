@@ -1,3 +1,204 @@
+2017-04-04  Murray Cumming  <murrayc@murrayc.com>
+
+	2.50.1
+
+2017-04-04  Murray Cumming  <murrayc@murrayc.com>
+
+	C++11: Variant: Replace more throw(std::bad_cast) with noexcept(false).
+
+	This is necessary for C++17 which completely removes dynamic
+	exception specifications.
+	See https://bugzilla.redhat.com/show_bug.cgi?id=1438766
+
+2017-04-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Revert "Gio::Settings: fix type of 'key' parameter of writable-change-event signal"
+
+	This reverts commit d78ae1d81410bd7930aede831cdf1f15ae4920af.
+
+	This doesn't seem appropriate for the stable release cycle.
+
+2017-04-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Revert "ustring: Add cbegin() and cend()."
+
+	This reverts commit 1cce397af6d1c9dd588d4a16e2b33933bb30d2ea.
+
+	We should not add API in a stable release cycle.
+
+2017-04-04  Murray Cumming  <murrayc@murrayc.com>
+
+	Revert "Gio::Settings: Make set_enum() + set_flags() usable"
+
+	This reverts commit 47260efc771b4ee3556116a6a8871d30ff43361f.
+
+	We should not add API in a stable release cycle.
+
+2017-04-04  Murray Cumming  <murrayc@murrayc.com>
+
+	C++11: Variant: Replace throw(std::bad_cast) with noexcept(false).
+
+	This is necessary for C++17 which completely removes dynamic
+	exception specifications.
+	See https://bugzilla.redhat.com/show_bug.cgi?id=1438766
+
+2017-03-13  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Gio::Application::get_default(): Add refreturn
+
+	Bug 779936
+
+2017-02-14  Daniel Boles  <dboles@src.gnome.org>
+
+	SimpleAction—doc—Erase wrong line & duplicate word
+
+	In case anyone is as easily confused as me…
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=778575
+
+2017-02-13  Daniel Boles  <dboles@src.gnome.org>
+
+	Glib::Variant—Improve documentation of get_maybe()
+
+	Clarify what is set and returned, and use lower case “nothing” to match
+	how that must be written in GVariant text format, à la GSettings, etc.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=778219
+
+2017-02-13  Daniel Boles  <dboles@src.gnome.org>
+
+	Glib::Variant—Explain how to create “maybe” types
+
+	It’s not exactly intuitive why the *_maybe() methods are kept in
+	ContainerBase, nor that Variant<VariantBase> inherits from the former
+	and is the way to get a maybe-typed Variant in glibmm. Let’s fix that!
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=778219
+
+2017-02-13  Daniel Boles  <dboles@src.gnome.org>
+
+	Glib::Variant—Cosmetically tweak braces & newlines
+
+	Donʼt use braces for single-line blocks, and do if the other side of an
+	if/else already did. Also, get rid of a couple of extraneous newlines.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=778219
+
+2017-02-05  Daniel Boles  <dboles@src.gnome.org>
+
+	Glib::Variant: Fix a copy-pasted typo in func docs
+
+2017-02-02  Daniel Boles  <dboles@src.gnome.org>
+
+	Gio::Action: Remove unneeded #includes in ccg
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=777953
+
+2017-02-02  Daniel Boles  <dboles@src.gnome.org>
+
+	Gio::Action: #include <glibmm/variant.h> in hg
+
+	Currently, it is included indirectly, via 3 other headers. This is
+	brittle. Without that, users of action.h would have to manually include
+	variant.h to use methods returning the forward-declared VariantBase,
+	which isn’t very helpful. Plus, the header uses types like Variant<>
+	templates and VariantContainerBase, which were never forward-declared.
+
+	Including it directly makes the dependency more obvious and less brittle
+	and spares us from having to write a bunch more forward-declarations.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=777953
+
+2017-01-04  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Visual Studio builds: "Install" the .pdb files
+
+	Since we generate the .pdb files during the build, we should copy them to
+	make debugging glibmm on Windows easier.
+
+2016-12-27  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Gio::ActionMap: Fix some trivial documentation bugs
+
+2016-12-26  Daniel Boles  <dboles@src.gnome.org>
+
+	Gio::ActionMap: Add function to ActivateSlot doc
+
+	It's used in add_action_with_bool() too.
+
+2016-12-26  Daniel Boles  <dboles@src.gnome.org>
+
+	Gio::ActionMap: Clarify doc of ActivateWithParameterSlot
+
+	This brings it in line with the existing doc comment for ActivateSlot.
+
+2016-12-12  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Glib::Dispatcher: Don't cast a HANDLE to an int on Windows
+
+	* glib/glibmm/dispatcher.cc: When a Windows HANDLE must be cast, cast it
+	to Glib::PollFD::fd_t instead of int. Bug 772074
+
+2016-12-12  Marcin Kolny  <marcin.kolny@gmail.com>
+
+	PollFD: autodeduce type of fd field
+
+	* glib/glibmm/main.[h|cc]: file descriptor to poll can be either of gint,
+	or gint64 type, depending on the platform. glibmm should follow this
+	rule as well.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=772074
+
+2016-12-05  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
+
+	Gio::DBus::Proxy: Fix memory leak in get_cached_property_names()
+
+	Bug 775210
+
+2016-11-30  djb  <db0451@gmail.com>
+
+	Gio::Settings: Make set_enum() + set_flags() usable
+
+	The _WRAP_METHOD calls had the names typo'd as get_enum() + get_flags().
+	Keep and deprecate the misnamed methods.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=774647
+
+2016-11-19  Marcin Kolny  <marcin.kolny@gmail.com>
+
+	Gio::SettingsSchemaSource: do an extra reference() for returning value
+
+	* gio/src/settingsschemasource.hg: method get_default() returns
+	transfer-none value, what means that we need to increase refcount
+	before wrapping the pointer by RefPtr class.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=774593
+
+2016-11-08  Murray Cumming  <murrayc@murrayc.com>
+
+	ustring: Add cbegin() and cend().
+
+	As in std::string since C++11.
+
+2016-11-05  Marcin Kolny  <marcin.kolny@gmail.com>
+
+	Gio::Settings: fix type of 'key' parameter of writable-change-event signal
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=773977
+
+2016-11-05  Murray Cumming  <murrayc@murrayc.com>
+
+	Examples: Avoid a warning about unused code.
+
+	This useful warning seems to be new in g++ 6:
+
+	thread/dispatcher2.cc:88:1: error: ‘{anonymous}::ThreadTimer::~ThreadTimer()’ defined but not used [-Werror=unused-function]
+	ThreadTimer::~ThreadTimer()
+
+2016-09-20  Murray Cumming  <murrayc@murrayc.com>
+
+	2.49.7
+
 2016-09-13  Murray Cumming  <murrayc@murrayc.com>
 
 	2.49.7
