@@ -2709,6 +2709,10 @@ libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy4callERKN4Glib7ustringERKN4sigc4slotIvRNS2_6
 libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy4callERKN4Glib7ustringERKN4sigc4slotIvRNS2_6RefPtrINS_11AsyncResultEEENS6_3nilESC_SC_SC_SC_SC_EERKNS8_INS_11CancellableEEERKNS2_20VariantContainerBaseEiNS0_9CallFlagsE
 libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy4callERKN4Glib7ustringERKNS2_20VariantContainerBaseERKN4sigc4slotIvRNS2_6RefPtrINS_11AsyncResultEEENS9_3nilESF_SF_SF_SF_SF_EERKNSB_INS_10UnixFDListEEEiNS0_9CallFlagsE
 libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy4callERKN4Glib7ustringERKNS2_20VariantContainerBaseERKN4sigc4slotIvRNS2_6RefPtrINS_11AsyncResultEEENS9_3nilESF_SF_SF_SF_SF_EERKNSB_INS_11CancellableEEERKNSB_INS_10UnixFDListEEEiNS0_9CallFlagsE
+libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy4callERKN4Glib7ustringERKNS2_20VariantContainerBaseERKNS2_6RefPtrINS_10UnixFDListEEEiNS0_9CallFlagsE
+libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy4callERKN4Glib7ustringERKNS2_20VariantContainerBaseERKNS2_6RefPtrINS_11CancellableEEERKNS9_INS_10UnixFDListEEEiNS0_9CallFlagsE
+libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy4callERKN4Glib7ustringERKNS2_20VariantContainerBaseEiNS0_9CallFlagsE
+libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy4callERKN4Glib7ustringERKNS2_6RefPtrINS_11CancellableEEERKNS2_20VariantContainerBaseEiNS0_9CallFlagsE
 libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy6createERKN4Glib6RefPtrINS0_10ConnectionEEERKNS2_7ustringESA_SA_RKN4sigc4slotIvRNS3_INS_11AsyncResultEEENSB_3nilESG_SG_SG_SG_SG_EERKNS3_INS0_13InterfaceInfoEEENS0_10ProxyFlagsE
 libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy6createERKN4Glib6RefPtrINS0_10ConnectionEEERKNS2_7ustringESA_SA_RKN4sigc4slotIvRNS3_INS_11AsyncResultEEENSB_3nilESG_SG_SG_SG_SG_EERKNS3_INS_11CancellableEEERKNS3_INS0_13InterfaceInfoEEENS0_10ProxyFlagsE
 libgiomm-2.4.so.1:_ZN3Gio4DBus5Proxy8get_typeEv
@@ -3692,10 +3696,12 @@ libgiomm-2.4.so.1:_ZN3Gio8Settings6revertEv
 libgiomm-2.4.so.1:_ZN3Gio8Settings7set_intERKN4Glib7ustringEi
 libgiomm-2.4.so.1:_ZN3Gio8Settings8get_enumERKN4Glib7ustringEi
 libgiomm-2.4.so.1:_ZN3Gio8Settings8get_typeEv
+libgiomm-2.4.so.1:_ZN3Gio8Settings8set_enumERKN4Glib7ustringEi
 libgiomm-2.4.so.1:_ZN3Gio8Settings8set_uintERKN4Glib7ustringEj
 libgiomm-2.4.so.1:_ZN3Gio8Settings9get_childERKN4Glib7ustringE
 libgiomm-2.4.so.1:_ZN3Gio8Settings9get_flagsERKN4Glib7ustringEj
 libgiomm-2.4.so.1:_ZN3Gio8Settings9gobj_copyEv
+libgiomm-2.4.so.1:_ZN3Gio8Settings9set_flagsERKN4Glib7ustringEj
 libgiomm-2.4.so.1:_ZN3Gio8Settings9set_int64ERKN4Glib7ustringEl
 libgiomm-2.4.so.1:_ZN3Gio8Settings9set_uiintERKN4Glib7ustringEj
 libgiomm-2.4.so.1:_ZN3Gio8Settings9set_valueERKN4Glib7ustringERKNS1_11VariantBaseE
@@ -3733,6 +3739,7 @@ libgiomm-2.4.so.1:_ZN3Gio9ActionMap23add_action_radio_stringERKN4Glib7ustringES4
 libgiomm-2.4.so.1:_ZN3Gio9ActionMap24add_action_radio_integerERKN4Glib7ustringERKN4sigc4slotIviNS5_3nilES7_S7_S7_S7_S7_EEi
 libgiomm-2.4.so.1:_ZN3Gio9ActionMap24add_action_radio_integerERKN4Glib7ustringEi
 libgiomm-2.4.so.1:_ZN3Gio9ActionMap25add_action_with_parameterERKN4Glib7ustringERKN4sigc4slotIvRKNS1_11VariantBaseENS5_3nilESA_SA_SA_SA_SA_EE
+libgiomm-2.4.so.1:_ZN3Gio9ActionMap25add_action_with_parameterERKN4Glib7ustringERKNS1_11VariantTypeERKN4sigc4slotIvRKNS1_11VariantBaseENS8_3nilESD_SD_SD_SD_SD_EE
 libgiomm-2.4.so.1:_ZN3Gio9ActionMap8get_typeEv
 libgiomm-2.4.so.1:_ZN3Gio9ActionMapC1EOS0_
 libgiomm-2.4.so.1:_ZN3Gio9ActionMapC1EP11_GActionMap
@@ -4302,10 +4309,14 @@ libgiomm-2.4.so.1:_ZNK3Gio17InetSocketAddress8get_portEv
 libgiomm-2.4.so.1:_ZNK3Gio17MenuAttributeIter8get_nameEv
 libgiomm-2.4.so.1:_ZNK3Gio17MenuAttributeIter9get_valueEv
 libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey11get_summaryEv
+libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey11range_checkERKN4Glib11VariantBaseE
 libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey11unreferenceEv
+libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey14get_value_typeEv
 libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey15get_descriptionEv
+libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey17get_default_valueEv
 libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey4gobjEv
 libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey8get_nameEv
+libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey9get_rangeEv
 libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey9gobj_copyEv
 libgiomm-2.4.so.1:_ZNK3Gio17SettingsSchemaKey9referenceEv
 libgiomm-2.4.so.1:_ZNK3Gio17SimpleActionGroup6lookupERKN4Glib7ustringE
@@ -6490,6 +6501,7 @@ libglibmm-2.4.so.1:_ZNK4Glib11VariantType11is_definiteEv
 libglibmm-2.4.so.1:_ZNK4Glib11VariantType12is_containerEv
 libglibmm-2.4.so.1:_ZNK4Glib11VariantType13is_dict_entryEv
 libglibmm-2.4.so.1:_ZNK4Glib11VariantType13is_subtype_ofERKS0_
+libglibmm-2.4.so.1:_ZNK4Glib11VariantType14get_item_typesEv
 libglibmm-2.4.so.1:_ZNK4Glib11VariantType18_get_string_lengthEv
 libglibmm-2.4.so.1:_ZNK4Glib11VariantType3keyEv
 libglibmm-2.4.so.1:_ZNK4Glib11VariantType4hashEv
@@ -6726,6 +6738,7 @@ libglibmm-2.4.so.1:_ZNK4Glib7ustring17find_first_not_ofEjm
 libglibmm-2.4.so.1:_ZNK4Glib7ustring20casefold_collate_keyB5cxx11Ev
 libglibmm-2.4.so.1:_ZNK4Glib7ustring2atEm
 libglibmm-2.4.so.1:_ZNK4Glib7ustring3endB5cxx11Ev
+libglibmm-2.4.so.1:_ZNK4Glib7ustring4cendB5cxx11Ev
 libglibmm-2.4.so.1:_ZNK4Glib7ustring4copyEPcmm
 libglibmm-2.4.so.1:_ZNK4Glib7ustring4dataEv
 libglibmm-2.4.so.1:_ZNK4Glib7ustring4findEPKcm
@@ -6744,6 +6757,7 @@ libglibmm-2.4.so.1:_ZNK4Glib7ustring5rfindEPKcmm
 libglibmm-2.4.so.1:_ZNK4Glib7ustring5rfindERKS0_m
 libglibmm-2.4.so.1:_ZNK4Glib7ustring5rfindEcm
 libglibmm-2.4.so.1:_ZNK4Glib7ustring5rfindEjm
+libglibmm-2.4.so.1:_ZNK4Glib7ustring6cbeginB5cxx11Ev
 libglibmm-2.4.so.1:_ZNK4Glib7ustring6lengthEv
 libglibmm-2.4.so.1:_ZNK4Glib7ustring6rbeginB5cxx11Ev
 libglibmm-2.4.so.1:_ZNK4Glib7ustring7compareEPKc

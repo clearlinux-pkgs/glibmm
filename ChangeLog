@@ -1,6 +1,165 @@
-2017-04-04  Murray Cumming  <murrayc@murrayc.com>
+2017-06-23  Murray Cumming  <murrayc@murrayc.com>
 
-	2.50.1
+	2.52.0
+
+2017-05-31  Daniel Boles  <dboles.src@gmail.com>
+
+	RefPtr: Clarify comment about undefined behaviour
+
+	Dereferencing a null pointer does not necessarily cause a segfault:
+	it is undefined behaviour, which means anything, or nothing, may happen.
+	Avoid setting an expectation that a segfault will reliably occur here.
+
+2017-05-31  Daniel Boles  <dboles.src@gmail.com>
+
+	ActionMap: Revert accidental changes to Slot decls
+
+	I cherry-picked a commit from master that should only have updated
+	documentation, but because the way of declaring slots has been changed
+	in libsigc++, it ended up changing them here too. That was unintentional
+
+2017-05-29  Daniel Boles  <dboles@src.gnome.org>
+
+	Variant: Use own get_n_children() instead of C API
+
+	This looks much less ugly.
+
+2017-05-18  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::UnixSocketAddress::create(): Remove a default value
+
+	Remove the default value of the 'type' parameter. As there is another
+	create() with one parameter, the default value makes a call to
+	create("pathname") ambiguous. Bug 782592
+
+2017-05-12  Vyacheslav Yurkov  <uvv.mail@gmail.com>
+
+	Gio::DBus::Proxy: Wrap call() and call_sync() methods. Bug 781818
+
+2017-05-08  Murray Cumming  <murrayc@murrayc.com>
+
+	2.51.7
+
+2017-05-08  Murray Cumming  <murrayc@murrayc.com>
+
+	gio/src/filelist.am: Really use desktopappinfo.hg to fix the build.
+
+	This fixes a build breakage, when building from a fresh checkout,
+	introduced by commit dd671f29ff9a005776ebd9e7cf20fdc5e44c14b8 .
+
+2017-05-05  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::VariantType: Deprecate first() and next(). Add get_item_types()
+
+	Bug 775741
+
+2017-05-05  Daniel Boles  <dboles@src.gnome.org>
+
+	ActionMap: Improve add_action_with_parameter docs
+
+	• Clarify why the old overload has been deprecated: it simply does not
+	work for the desired result because the parameter_type was not passed
+
+	• Elaborate on the purpose of the parameter_type in the new overload.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=774444
+
+2017-05-04  Daniel Boles  <dboles@src.gnome.org>
+
+	ActionMap: Really fix add_action_with_parameter()
+
+	I replaced the old line that both created an Action without a parameter
+	and added it, only with a line that creates an Action with a
+	parameter... but did not add it. Of course, we need to do that, too.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=774444
+
+2017-05-04  U-eagle\daniel.boles  <daniel.boles@eagle-ws29.eagle.local>
+
+	Gio::SimpleAction: Move set_state to original pos
+
+	If I’d realised there was a specific commit that protected this, I would
+	have reverted it, rather than doing it manually in my previous commit.
+
+	Completes reversion of commit b7431bca6ccbd9f918b5ef73bae65a1c7828e7e0 –
+	“Gio::SimpleAction: Make set_state() protected.”
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=777953
+
+2017-05-04  Daniel Boles  <dboles@src.gnome.org>
+
+	Gio::SimpleAction: Make set_state() public
+
+	This is needed to apply the requested state in a custom handler for
+	signal_change_state(). It was protected on an assumption that when the C
+	doc for g_simple_action_set_state() said “This should only be called by
+	the implementor of the action”, it meant the implementor of a subclass.
+
+	But the C docs for signal change-state are clear that it means the
+	implementor of the signal handler. Without such a user being able to
+	call set_state(), they can’t apply the new state, unless they subclass
+	SimpleAction, which is a lot to require for such a simple case as this.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=777953
+
+2017-05-04  Murray Cumming  <murrayc@murrayc.com>
+
+	ActionMap: Add back add_action_with_parameter() without parameter_type.
+
+	To avoid breaking ABI due to this commit that added a parameter:
+	https://git.gnome.org/browse/glibmm/commit/?h=glibmm-2-52&id=19ea8885ef17743c7c6e436e770b3b3835ca5016
+	Bug #774444
+
+2017-05-04  Daniel Boles  <dboles@src.gnome.org>
+
+	ActionMap—Reorder add_action_with_parameter’s args
+
+	This matches e.g. simpleaction.hg and is what I originally intended.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=774444
+
+2017-05-04  Daniel Boles  <dboles@src.gnome.org>
+
+	Gio::ActionMap: trivially move an _IGNORE
+
+2017-05-04  Daniel Boles  <dboles@src.gnome.org>
+
+	Gio::ActionMap: Improve declaration order/spacing
+
+	This puts several things in more logical places and adds a couple of
+	line breaks that make it easier to see the key sections in the header.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=774444
+
+2017-05-04  Daniel Boles  <dboles@src.gnome.org>
+
+	Gio::ActionMap: Fix add_action_with_parameter()
+
+	It was not registering the parameter type for the action on create, so
+	when activating the action later and passing a parameter, an assertion
+	failed about the expected and passed parameter types/counts not matching
+	and the parameter was not usable.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=774444
+
+2017-05-04  Daniel Boles  <dboles@src.gnome.org>
+
+	SettingsSchemaKey: Add missing value/range methods
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=774903
+
+2017-04-30  John Ralls  <jralls@ceridwen.us>
+
+	Bug 781947 - Build fails on MacOS because glib doesn't have gdesktopinfo.
+
+	Disable building desktopapinfo.cpp with the same test used in glib.
+
+2017-04-29  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::Object: Suppress deprecation warning for g_object_newv()
+
+	g_object_newv() is deprecated in favor of g_object_new_with_properties(),
+	which is new in glib 2.54.
 
 2017-04-04  Murray Cumming  <murrayc@murrayc.com>
 
@@ -12,35 +171,21 @@
 
 2017-04-04  Murray Cumming  <murrayc@murrayc.com>
 
-	Revert "Gio::Settings: fix type of 'key' parameter of writable-change-event signal"
-
-	This reverts commit d78ae1d81410bd7930aede831cdf1f15ae4920af.
-
-	This doesn't seem appropriate for the stable release cycle.
-
-2017-04-04  Murray Cumming  <murrayc@murrayc.com>
-
-	Revert "ustring: Add cbegin() and cend()."
-
-	This reverts commit 1cce397af6d1c9dd588d4a16e2b33933bb30d2ea.
-
-	We should not add API in a stable release cycle.
-
-2017-04-04  Murray Cumming  <murrayc@murrayc.com>
-
-	Revert "Gio::Settings: Make set_enum() + set_flags() usable"
-
-	This reverts commit 47260efc771b4ee3556116a6a8871d30ff43361f.
-
-	We should not add API in a stable release cycle.
-
-2017-04-04  Murray Cumming  <murrayc@murrayc.com>
-
 	C++11: Variant: Replace throw(std::bad_cast) with noexcept(false).
 
 	This is necessary for C++17 which completely removes dynamic
 	exception specifications.
 	See https://bugzilla.redhat.com/show_bug.cgi?id=1438766
+
+2017-03-22  Murray Cumming  <murrayc@murrayc.com>
+
+	2.51.6
+
+	This is the first 2.51.* version of glibmm-2.4.
+	There were previously some 2.51 versions of glibmm-2.52, which
+	installed in parallel with glibmm-2.4,
+	but there will not be any stable version of glibmm-2.52.
+	There might instead be a stable version of glibmm-2.54 eventually.
 
 2017-03-13  Kjell Ahlstedt  <kjell.ahlstedt@bredband.net>
 
