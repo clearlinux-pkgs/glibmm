@@ -1,3 +1,56 @@
+2017-09-04  Murray Cumming  <murrayc@murrayc.com>
+
+	2.52.1
+
+2017-09-01  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::VariantIter: Fix typos in copyright notice
+
+2017-08-30  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Update the Free Software Foundation address in copyright notices
+
+	Bug 786824
+
+2017-08-30  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gio/src/filelist.am: Really include all .hg files in giomm_files_hg
+
+	Due to an extra blank some files were not processed by gmmproc.
+
+2017-08-15  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio: Exclude DesktopAppInfo from wrap_init.cc on MacOS
+
+	Modify the conditional inclusion of desktopappinfo.h in giomm.h and
+	wrap_init.cc. It shall not be included when running under MacOS. This should
+	have been fixed by commit fe99895f8d3b61409c416f1244a29f2aa3478f96.
+	Bug 781947
+
+2017-08-15  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gio/src/filelist.am: Always include all .hg files in giomm_files_hg
+
+	Commit 0bc35fb4fa28ee8564fecab4e21011dc42e74ed1 fixed giomm_files_hg,
+	but in the wrong way. giomm_files_hg shall always include all .hg files,
+	regardless of which ones are used on the present platform.
+
+2017-07-30  Daniel Boles  <dboles.src@gmail.com>
+
+	miscutils: Update docs of get_*_name() from GLib
+
+	plus some minor tweaks that don't quite seem worth changing upstream.
+
+	This adds some useful extra context for get_(prg|user|real)name().
+
+2017-06-27  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::TlsDatabase: Fix memory leak in a vfunc
+
+	create_certificate_handle_vfunc() shall delete the returned character array
+	after it has been copied to a Glib::ustring, or else it leaks memory.
+	Bug 783360
+
 2017-06-23  Murray Cumming  <murrayc@murrayc.com>
 
 	2.52.0
