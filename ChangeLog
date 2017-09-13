@@ -1,3 +1,122 @@
+2017-09-13  Murray Cumming  <murrayc@murrayc.com>
+
+	2.54.0
+
+2017-09-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::ActionGroup, Settings: Add detail_name to some _WRAP_SIGNAL()s
+
+	* gio/src/actiongroup.hg: signal_action_added(), signal_action_removed(),
+	signal_action_enabled_changed() and signal_action_state_changed() accept
+	an 'action_name' parameter.
+	* gio/src/settings.hg: signal_writable_changed() accepts a 'key' parameter.
+
+2017-09-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Regenerate gio_signals.defs and gio_signals.defs.patch
+
+2017-09-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	generate_extra_defs.cc: Write signal flags to .defs files
+
+	Bug 785895
+
+2017-09-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Write signal flags to generated documentation
+
+	Bug 785895
+
+2017-09-12  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Warn for unmatched deprecations in signals and properties
+
+	Warn if a signal or a property is deprecated in the _WRAP_* macro,
+	but not in the .defs file. (Warnings if a signal or a property is
+	deprecated in the .defs file, but not in the _WRAP_* macro have been
+	added previously.)
+
+2017-09-08  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::Variant: Improved support for D-Bus object paths and signatures
+
+	* glib/glibmm/filelist.am: Add variantdbusstring.h and variantdbusstring.cc.
+	* glib/glibmm/variantdbusstring.[cc|h]: New files. String classes meant
+	only for Variants with D-Bus object paths or D-Bus signatures.
+	* glib/src/variant.[ccg|hg]: Add specializations for
+	Variant<Glib::DBusObjectPathString>, Variant<Glib::DBusSignatureString>
+	and Variant<std::vector<Glib::DBusObjectPathString>>.
+	* glib/src/varianttype.[ccg|hg]: Add VARIANT_TYPE_OBJECT_PATH_ARRAY.
+	* tests/glibmm_variant/main.cc: Add test_object_path().
+
+	Make it possible to create a composite Variant containing variant type
+	o (D-Bus object path) or g (D-Bus signature). Bug 785700
+
+2017-09-08  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	tests/glibmm_variant: Add test of Variant<std::tuple>
+
+	Bug 777791
+
+2017-09-08  Alexander Rössler  <alexander.roessler@zuehlke.com>
+
+	Glib::Variant: Add template specialization for std::tuple
+
+	Bug 777791
+
+2017-09-08  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Regenerate glib_signals.defs and gio_signals.defs
+
+2017-09-08  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	generate_extra_defs.cc: Write default values of properties to .defs files
+
+	Bug 785895
+
+2017-09-08  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Write default values of properties to generated documentation
+
+	Bug 785895
+
+2017-09-07  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Accept curly braces in default values in _WRAP macros
+
+	In C++11 default values of function arguments can contain curly braces,
+	such as const Glib::RefPtr<SomeClass>& x = {}. Bug 783216 comment 13
+
+2017-09-07  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Remove obsolete TODO comments
+
+2017-09-07  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Fix _WRAP_ENUM for enumerators with apostrophes
+
+	* tools/enum.pl: Handle enumerator values like 'B', 1u << 2, (gint)(1u << 31).
+	Suppress repeated long warnings.
+	* tools/pm/Output.pm: Handle enumerator values like 'B'. (1u << 2 and
+	(gint)(1u << 31) require no fix.)
+
+2017-09-07  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib, Gio: docs_override.xml: Add substitute_enumerator_name elements
+
+	Don't modify names of preprocessor macros.
+
+2017-09-07  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Add new elements types for the docs_override.xml files
+
+	* tools/pm/DocsParser.pm: Add handling of substitute_type_name and
+	substitute_enumerator_name elements in docs_override.xml files.
+	This is a small part of the fix for enum class and enums inside classes,
+	discussed in bug 86864, which is implemented in full in the next ABI-
+	reaking version of glibmm. This particular part does not break ABI,
+	it just improves the generated documentation.
+
 2017-09-04  Murray Cumming  <murrayc@murrayc.com>
 
 	2.52.1
