@@ -1,3 +1,30 @@
+2017-09-18  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	2.54.1
+
+2017-09-18  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::Variant<std::tuple>: Don't use std::index_sequence from C++14
+
+	std::index_sequence and std::index_sequence_for are new in C++14,
+	but this version of glibmm requires only C++11.
+	The code that replaces std::index_sequence has been provided by
+	Jonathan Wakely <zilla@kayari.org>. Bug 787648
+
+2017-09-17  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Convert all property documentation to C++
+
+	Bug 787698
+
+2017-09-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::Application docs: Add a note to property_resource_base_path()
+
+	The type of property_resource_base_path() shall be std::string (is bool).
+	Fixing this would break API and ABI. A fix has to wait until the next
+	API/ABI break. For now, add a note to the documentation. Bug 787496
+
 2017-09-13  Murray Cumming  <murrayc@murrayc.com>
 
 	2.54.0
