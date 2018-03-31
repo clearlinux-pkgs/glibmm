@@ -1,3 +1,185 @@
+2018-03-31  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	2.56.0
+
+2018-03-29  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::DesktopAppInfo: Add get_locale_string()
+
+2018-03-29  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::Application: Add set_option_context_*()
+
+	Add set_option_context_parameter_string(), set_option_context_summary(),
+	set_option_context_description().
+
+2018-03-21  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::Application: Add property_resource_base_path_string()
+
+	property_resource_base_path() has the wrong return type, bool instead of
+	std::string. It can't be fixed without breaking API/ABI. For now, deprecate
+	property_resource_base_path() and add hand-coded
+	property_resource_base_path_string() with the correct type. Bug 787496
+
+2018-03-21  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::RefPtr: Add get()
+
+	Analogous to std::shared_ptr::get(). Bug 495762
+
+2018-03-20  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::Module: Remove obsolete _IGNORE() directives
+
+2018-03-20  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::AppInfo: Change some parameter names
+
+2018-03-20  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::DataInputStream: Deprecate read_until() and friends
+
+	Deprecate read_until(), read_until_async() and read_until_finish().
+	The corresponding glib functions have been deprecated.
+
+2018-03-20  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::TlsClientConnection: Deprecate set/get/property_use_ssl3()
+
+	The corresponding glib functions have been deprecated.
+
+2018-03-20  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib, Gio: Regenerate docs.xml and .defs files
+
+	* tools/extra_defs_gen/generate_defs_gio.cc: Add an initial call to
+	get_defs(G_TYPE_APPLICATION) to make sure the first call to get_defs()
+	requests info on a GObject, not a GInterface.
+
+2018-03-02  Pavlo Solntsev  <pavlo.solntsev@gmail.com>
+
+	member.m4: Add _MEMBER_SET_STR, setter for strings
+
+	Introduce a macro to generate appropriate setter for a structure which
+	has gchar* as a member. Bug 793778
+
+2018-02-15  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::DataInputStream: Disable deprecation warnings from glib
+
+	g_data_input_stream_read_until(), _read_until_async() and _read_until_finish()
+	have been deprecated in glib/gio. They can't be deprecated in the stable
+	glibmm-2-54 branch now. This patch makes it possible to build glibmm-2.54.x
+	against the newest glib.
+
+2018-01-25  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::TimeoutSource: Use monotonic time consistently
+
+	* glib/glibmm/main.[cc|h]: Use Source::get_time() consistently.
+	Remove a misleading sentence from the documentation of
+	Source::get_current_time(). Bug 792524
+
+2018-01-18  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::TlsClientConnection: Disable deprecation warnings from glib
+
+	g_tls_client_connection_[set|get]_use_ssl3() and the use-ssl3 property
+	have been deprecated in glib/gio. They can't be deprecated in the stable
+	glibmm-2-54 branch now. This patch makes it possible to build glibmm-2.54.x
+	against the newest glib.
+
+2018-01-15  Daniel Boles  <dboles@src.gnome.org>
+
+	Variant: Slightly elaborate Variant<Variant> docs
+
+	Point out get_n_children() for checking nullable status, and copy the
+	doc for Variant<VariantBase> to Variant< Variant<T> >.
+
+	https://bugzilla.gnome.org/show_bug.cgi?id=778219
+
+2017-12-20  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::Threads::Private: Fix gobj()
+
+	Bug 791711
+
+2017-11-20  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::VariantBase::cast_dynamic(): Remove noexcept(false)
+
+	noexcept(false) has the same meaning as no noexcept specification, but
+	Doxygen adds "noexcept" instead of "noexcept(false)" in the detailed
+	description of the method, which is confusing. Bug 789329
+
+2017-10-23  Daniel Boles  <dboles@src.gnome.org>
+
+	Variant: Fix typo: unclosed monospace tag
+
+2017-10-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc, _WRAP_METHOD_DOCS_ONLY: Optionally suppress @return section
+
+	Add an optional 'voidreturn' parameter that can be specified if the wrapped
+	C function returns a value, but the corresponding C++ method returns void.
+	Bug 787978
+
+2017-09-29  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::Action: Add exception specs to errthrow
+
+2017-09-29  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::KeyFile, OptionContext, Regex: Add exception specs to errthrow
+
+2017-09-29  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: _WRAP_METHOD: Accept optional list of exceptions in errthrow
+
+	In _WRAP_METHOD[_DOCS_ONLY], the errthrow parameter can now contain an
+	optional list of exceptions with default value Glib::Error.
+	Corresponding @throws Doxygen commands are included in the documentation,
+	if the documentation does not contain other @throws commands (e.g.
+	from *_docs_override.xml). Bug 787979
+
+2017-09-24  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Gio::DataInputStream: Fix the documentation of read_line_utf8()
+
+	Hand-code the documentation of read_line_utf8() and read_line_finish_utf8().
+	Use Glib::convert_return_gchar_ptr_to_stdstring() to set the output
+	parameter. It handles the case when the char* is NULL.
+	Minor fixes in the documentation of several other methods.
+
+2017-09-24  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	gmmproc: Suppress the @return section if return type is void
+
+	If the wrapped C function returns a value, but the corresponding C++ method
+	returns void, _WRAP_METHOD() suppresses the @return section in the
+	documentation. Bug 787978
+
+2017-09-20  Murray Cumming  <murrayc@murrayc.com>
+
+	tests: Avoid unused function warnings from G_DECLARE_INTERFACE()
+
+2017-09-19  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	tests/glibmm_variant: Use C++14 features conditionally
+
+	* glib/src/variant.hg: Add (void) to intentionally unused variables,
+	thus avoiding warnings when the test case is built with clang++.
+	* tests/glibmm_variant/main.cc: Use std::get<Number>(std::tuple)
+	(not std::get<Type>()) when compiling with only C++11 support.
+	Bug 787648
+
+2017-09-19  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::Variant: Avoid warnings from clang++
+
+	Bug 787648
+
 2017-09-18  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
 
 	2.54.1
