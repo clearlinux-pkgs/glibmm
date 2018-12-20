@@ -1,3 +1,188 @@
+2018-10-31  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	2.58.0
+
+2018-10-31  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	2.56.1
+
+2018-10-31  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Add tools/gen_scripts/generate_all.sh
+
+2018-10-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Update .gitignore
+
+	The Visual Studio build files are now in MSVC_NMake, not MSVC_201x.
+
+2018-10-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	Update build instructions in README.win32
+
+	Let people know how Visual Studio builds are now done via NMake
+	Makefiles, and the various build options available.
+
+2018-10-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	build: Remove Visual Studio 2015 projects
+
+	Remove them as they have been superseded by the NMake Makefiles.
+
+2018-10-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	build: Add NMake Makefiles
+
+	This adds a set of NMake Makefiles that can be used to build glibmm with
+	Visual Studio 2015 or later (2013 is not supported as it does not have
+	enough C++-11 support).  These NMake Makefiles are now dist'ed instead
+	of the Visual Studio 2015 projects as it is intended that the NMake
+	Makefiles will replace the Visual Studio projects, for maintenance
+	reasons.
+
+	Note that for the C++11 versions of glibmm, we name the DLLs and LIBs in
+	the form of <library>-vc140-2_4.[dll|lib] or
+	<library>-vc140-d-2_4.[dll|lib] since for both Visual Studio 2015 and
+	2017 builds as they both link to the Visual Studio v140 C/C++ runtimes.
+
+2018-10-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	build: Split out automake-specific items from filelist.am's
+
+	This will prepare the filelist.am's to be also usable with the NMake
+	Makefiles, so that they can be shared with the autotools build files.
+
+2018-10-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	builds: Rename MSVC_Net2015 as MSVC_NMake
+
+	This is to prepare the transition the Visual Studio build files into
+	NMake Makefiles.
+
+2018-10-26  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	tools/test_scripts/testheaders.sh: Fix a directory test
+
+2018-10-07  Daniel Boles  <dboles@src.gnome.org>
+
+	AsyncResult: Fix grammar error, <tt>ify enumerator
+
+	This was not a grammar error before C++ification! But let’s fix it
+	anyway, and give the enumeration name some nice formatting as well.
+
+2018-08-31  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Avoid compiler warnings from function pointer conversions
+
+	gcc8 -Wextra prints a warning when a single reinterpret_cast is used for
+	conversion between different types of function pointers. The previous fix
+	with a union in Glib::bitwise_equivalent_cast<>() is not standard C++.
+	Rename the function to Glib::function_pointer_cast<>(), and use two
+	reinterpret_casts as recommended in gcc's documentation.
+
+	* glib/src/optiongroup.ccg: Use a reinterpret_cast to convert from
+	a function pointer to void*. That's possible now. It's "conditionally
+	supported", starting with C++11.
+
+	See https://github.com/libsigcplusplus/libsigcplusplus/issues/8
+
+2018-08-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	MSVC builds: Ensure we build variantdbusstring.cc
+
+	...this was an added source file that ought to be included.  Also ensure
+	that the corresponding header gets "installed".
+
+2018-08-29  Chun-wei Fan  <fanchunwei@src.gnome.org>
+
+	MSVC builds: Require Visual Studio 2015
+
+	It was since 2.50.1 when we actually needed C++-11 features beyond what
+	Visual Studio 2013 supports, so bump the required Visual Studio version
+	to 2015, so that things will continue to build.
+
+2018-07-18  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	configure.ac: Require glib-2.0 >= 2.55.1
+
+	and update the bug report address in AC_INIT.
+
+	Fixes #29
+
+2018-07-17  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Avoid compiler warnings from function pointer conversions
+
+	gcc8 -Wextra prints a warning when reinterpret_cast is used for conversion
+	between different types of function pointers. Avoid that by adding
+	Glib::bitwise_equivalent_cast<>() with a union with members of
+	the two types of function pointers.
+
+	* glib/src/optiongroup.ccg: Use Glib::bitwise_equivalent_cast<>() to convert
+	from a function pointer to void*.
+
+	See https://github.com/libsigcplusplus/libsigcplusplus/issues/1
+
+2018-07-17  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Revert "Avoid compiler warnings from function pointer conversions"
+
+	This reverts commit 5d953603f30f0452cb9da35e3083a3fc145c3f57.
+
+	This can be done in a better way by keeping the union in a template function.
+
+2018-07-13  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Avoid compiler warnings from function pointer conversions
+
+	gcc8 -Wextra prints a warning when reinterpret_cast is used for conversion
+	between different types of function pointers. Avoid that by instead using
+	a union with members of the two types of function pointers.
+
+	See https://github.com/libsigcplusplus/libsigcplusplus/issues/1
+
+2018-07-05  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
+
+	Glib::MainContext: g_main_context_wait() is deprecated
+
+	* glib/glibmm/main.cc: Add G_GNUC_[BEGIN|END]_IGNORE_DEPRECATIONS.
+	* glib/glibmm/main.h: Update the description of MainContext::wait().
+
+2018-07-02  Daniel Boles  <dboles@src.gnome.org>
+
+	SocketClient: Take copy in RefPtrs for signal args
+
+	Without doing so, the C++ arguments take ownership of the C GObjects
+	passed to the handler, so both go out of scope on exiting the handler.
+
+	https://gitlab.gnome.org/GNOME/glibmm/issues/28
+
+2018-05-20  Daniel Boles  <dboles@src.gnome.org>
+
+	AsyncResult: Bin obsolete docs re: initing GThread
+
+	As the GLib Threads documentation states:
+
+	“Since version 2.32, the GLib threading system is automatically
+	initialized at the start of your program, and all thread-creation
+	functions and synchronization primitives are available right away.”
+
+2018-04-26  Clemens Lang  <cal@macports.org>
+
+	ustring: Fix wchar conversion on macOS with libc++
+
+	libc++ internally represents std::wstrings in UCS-4 just like libstdc++,
+	but does not set the __STDC_ISO_10646__ define. This caused the code to
+	fall back to calling iconv with the WCHAR_T source character set, which
+	does not correctly convert these strings and leads to errors, for
+	example in inkscape on startup.
+
+	See https://trac.macports.org/ticket/56214 for an instance of such
+	a problem.
+
+	Re-use the UCS4 to UTF8 conversion code when libc++ is detected, which
+	solves this. Bug 795338
+
 2018-03-31  Kjell Ahlstedt  <kjellahlstedt@gmail.com>
 
 	2.56.0
