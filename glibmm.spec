@@ -4,7 +4,7 @@
 #
 Name     : glibmm
 Version  : 2.60.0
-Release  : 13
+Release  : 14
 URL      : https://download.gnome.org/sources/glibmm/2.60/glibmm-2.60.0.tar.xz
 Source0  : https://download.gnome.org/sources/glibmm/2.60/glibmm-2.60.0.tar.xz
 Summary  : C++ bindings for GLib
@@ -83,8 +83,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1553007217
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1557000338
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -96,7 +102,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make test || :
 
 %install
-export SOURCE_DATE_EPOCH=1553007217
+export SOURCE_DATE_EPOCH=1557000338
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/glibmm
 cp COPYING %{buildroot}/usr/share/package-licenses/glibmm/COPYING
