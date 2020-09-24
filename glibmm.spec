@@ -4,7 +4,7 @@
 #
 Name     : glibmm
 Version  : 2.64.2
-Release  : 18
+Release  : 19
 URL      : https://download.gnome.org/sources/glibmm/2.64/glibmm-2.64.2.tar.xz
 Source0  : https://download.gnome.org/sources/glibmm/2.64/glibmm-2.64.2.tar.xz
 Summary  : C++ wrapper for GLib
