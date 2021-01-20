@@ -1,7 +1,72 @@
-2.64.2: (stable):
+2.68.0 (stable):
+This is the first stable release in the glibmm-2.68 ABI series.
+It is parallel-installable with the glibmm-2.4 ABI.
+
+The tarball for 2.68.0 has been created with 'meson dist'.
+If you build with Autotools from the tarball, please read the relevant
+part of the README file.
 
 Glib:
-* build_filename(): Fix the template overload
+* PropertyProxyConnectionNode::connect_changed():
+  Fix using without property name
+  (Daniel Boles) Issue #74 (wswfc), merge request !35
+* Remove BalancedTree
+  (Kjell Ahlstedt)
+
+Gio:
+* ListStore: Accept interfaces
+  (Andreas Persson) Merge request !38
+* MenuModel: Make MenuAttribute and MenuLink enum class
+  (Kjell Ahlstedt)
+* Add TlsClientConnectionImpl and TlsServerConnectionImpl
+  (Kjell Ahlstedt)
+* SocketClient::signal_event(): Fix wrapping of 'connection' parameter
+  (Kjell Ahlstedt) Issue #73 (smilingthax)
+
+gmmproc:
+* Add optional decl_prefix parameter to _WRAP_GERROR and _WRAP_ENUM
+  Used for adding GLIBMM_API or similar for MS Visual C++
+  (Chun-wei Fan) Merge request !32
+* Allow decorating comparison operators (for Visual Studio builds)
+  (Chun-wei Fan) Merge request !33
+* _CLASS_BOXEDTYPE, _CLASS_OPAQUE_COPYABLE: Fix move assignment
+  (Kjell Ahlstedt) Issue #76 (misos1)
+* Decorate private generated classes with __declspec when building
+  with Visual Studio
+  (Chun-wei Fan) Merge request !39, !41
+* generate_wrap_init.pl.in: Use g_type_ensure(SomeClass::get_type())
+  to ensure that get_type() is called
+  (Kjell Ahlstedt)
+
+Build:
+* Use __declspec(dllexport) consistently when building glibmm with
+  Visual Studio
+  (Chun-wei Fan) Merge request !32
+* Meson build: Set default value of the 'warnings' option to 'min'
+  (Kjell Ahlstedt)
+* Improve NMake support
+  (Chun-wei Fan)
+* Improve Visual Studio support
+  (Chun-wei Fan) Merge request !37
+* docs/reference/: Update for Doxygen >= 1.8.16
+  (Kjell Ahlstedt)
+* Meson build: Fix versioning on macOS
+  (Kjell Ahlstedt) Pull request libsigcplusplus#65 (Tom Schoonjans)
+* Meson build: Fix detection of macOS
+  (Tom Schoonjans) Merge request !43
+* Change the ABI to glibmm-2.68
+  (Kjell Ahlstedt)
+
+Documentation:
+* Meson build: Add missing Glib::Value and Variant documentation
+  (Kjell Ahlstedt)
+
+
+2.65.3: (unstable):
+Distro packagers should probably not package this yet.
+
+Tests:
+* glibmm_buildfilename: Add some tests
   (Kjell Ahlstedt) Issue #71 (Kalev Lember)
 
 Build:
@@ -9,14 +74,16 @@ Build:
   (Kjell Ahlstedt) Issue #70 (Jan Alexander Steffens)
 
 
-2.64.1: (stable):
+2.65.2: (unstable):
+Distro packagers should probably not package this yet.
 
 Glib:
 * Add missing #includes
   (Kjell Ahlstedt) Issue #69 (Kalev Lember)
 
 
-2.64.0 (stable):
+2.65.1: (unstable):
+Distro packagers should probably not package this yet.
 
 Glib:
 * Add get_user_runtime_dir()
@@ -26,20 +93,40 @@ Glib:
 * MainContext: Add push/pop/get_thread_default()
   (Kjell Ahlstedt) Issue #56 (Yackie-Yang)
 * Add StdStringView and UStringView
-  Use them in build_filename()
+  Use them in build_filename() and other functions
   (Thomas Holder, Kjell Ahlstedt) Issue #34
-* Regex: match(), match_all(): Deprecate rvalue string references
-  (Thomas Holder, Kjell Ahlstedt) Issue #66, merge request !26
+  (Thomas Holder) Issue #64, #65
+* Regex::match(): Avoid using string after deletion
+  (Thomas Holder) Issue #66, merge request !25
 * Add Glib::canonicalize_filename()
   (Kjell Ahlstedt) Issue #59 (Patrick Storz)
+* Binding: get_source() and get_target() return ObjectBase*
+  (Kjell Ahlstedt) Issue #63 (Daniel Boles)
 * ustring: Fix insert(iterator, In, In)
   (Thomas Holder) Merge request !19
+* Value: Adding static_assert() for template parameter
+  (Pavlo Solntsev) Merge request !23
+* Error: Derive from std::exception, remove Glib::Exception
+  (Kjell Ahlstedt) Issue #23 (Daniel Boles)
+* Binding: Keep a binding alive even without a RefPtr
+  (Kjell Ahlstedt) Issue #62 (Daniel Boles)
 
 Gio:
 * DBus::Connection: Make the wrap() function thread-safe
   (Kjell Ahlstedt) Issue #56 (Yackie-Yang)
+* SettingsSchemaSource: Add list_schemas()
+  Add a create(), wrapping new_from_directory()
+  (Daniel Boles) Issue #19, merge request !20
 * DBus::Message::get_unix_fd_list(): Add refreturn
   (Kjell Ahlstedt) Issue #68 (kr.woaini)
+
+Tests:
+* Add glibmm_ustring_compare test
+  (Thomas Holder) Issue #65
+* Add glibmm_regex test
+  (Thomas Holder) Issue #66, merge request !25
+* Add glibmm_binding test
+  (Daniel Boles) Merge request !18
 
 gmmproc:
 * Add optional decl_prefix parameter to _CLASS_BOXEDTYPE,
@@ -49,38 +136,36 @@ gmmproc:
   (Chun-wei Fan)
 
 Build:
+* Change the ABI to glibmm-2.66
+  (Kjell Ahlstedt)
 * Add Meson support
-  (Chun-wei Fan, Kjell Ahlstedt) Merge request !28
+  (Chun-wei Fan, Kjell Ahlstedt) Merge request !27
 * Drop gendef from Windows builds
-  (Chun-wei Fan) Issue #12 (Mikhail Titov), merge request !30
+  (Chun-wei Fan) Issue #12 (Mikhail Titov), merge request !29
 
 Documentation:
 * Correct spelling of spawn_async_with_pipes()
   (Mike Fleetwood) Merge request !16
 * Glib::Binding: Several doc improvements
-  (Daniel Boles) Merge request !17
+  (Daniel Boles) Merge request !18
 * Glib::Binding: Explain why SlotTransform takes GValue*
   (Kjell Ahlstedt) Issue #61 (Daniel Boles)
-* Regex: Note that Glib::ustring must be used in match methods
-  (Kjell Ahlstedt) Issue #66, merge request !26
-* Gio::AsyncResult: Improve the class description
+* Gio::AsyncResult: Improve the class description 
   (Kjell Ahlstedt) Issue #27 (Alberto Mardegan)
 
 
-2.62.0 (stable):
+2.63.1: (unstable):
+Distro packagers should probably not package this yet.
 
 Glib:
-* Add ustring::make_valid()
-  (Krzysztof Piecuch) Bug #780075
-  (Martin Ejdestig) Merge request !11
-  Issue #40 (Tanu Kaskinen)
-* Use convert_return_gchar_ptr_to_*() in a couple of ustring methods
+* ustring: Fix memory leak in make_valid()
+  Use convert_return_gchar_ptr_to_*() in a couple of methods
   (Martin Ejdestig) Merge request !11
 * Add ustring::sprintf(), wrapping g_strdup_printf()
   (Daniel Boles) Issue #21
 * Fix callback races in glibmm when GSource is destructed
   (Dainis Jonitis) Issue #41
-* Checksum, Datetime, TimeZone: Add Glib::Value specializations
+* Checksum, Datetime, TimeZone: Declare as _CLASS_BOXEDTYPE
   (Kjell Ahlstedt)
 * Property: Add const get_proxy() returning ReadOnly
   Getting Proxy from ReadOnly is const
@@ -89,7 +174,7 @@ Glib:
   (Kjell Ahlstedt)
 * Fix memory leak in Variant<std::tuple<>>::create()
   (Van de Bugger, Kjell Ahlstedt) Issue #48
-* Deprecate TimeVal
+* Remove TimeVal
   (Kjell Ahlstedt)
 
 Gio:
@@ -112,7 +197,11 @@ gmmproc:
   (Kjell Ahlstedt)
 
 Build:
+* Doxyfile.in: Remove unused configuration constants
+  (Kjell Ahlstedt) Issue #22
 * Require glib-2.0 >= 2.61.2
+  (Kjell Ahlstedt)
+* Change the ABI to glibmm-2.64
   (Kjell Ahlstedt)
 
 Documentation:
@@ -122,52 +211,60 @@ Documentation:
   (Kjell Ahlstedt) Issue #47 (Patrick Storz)
 
 
-2.60.0 (stable):
+2.61.1: (unstable):
+Distro packagers should probably not package this yet.
 
 Glib:
 * Add DateTime::get_timezone()
   Add KeyFile::get_locale_for_key()
   Add TimeZone::get_identifier()
   (Kjell Ahlstedt)
+* KeyFile: Make it a refcounted class
+  (Kjell Ahlstedt)
 * Add Value_RefPtrBoxed<>
   Add Value<std::vector<string>> specializations and other Value
   specializations that are necessary for _WRAP_PROPERTY
   (Kjell Ahlstedt)
-* Object construction: Add custom class init and instance init functions
-  (Kjell Ahlstedt) Issue #33
 
 Gio:
+* Put _WRAP_VFUNC in protected sections
+  (Kjell Ahlstedt)
 * Add AppInfo::launch_uris_async() and launch_uris_async()
-  Add DBusConnection::get_flags() and property_flags()
+  Add DBusConnection::get_flags()and property_flags()
   (Kjell Ahlstedt)
-* Settings: Add property_settings_schema()
-  (Kjell Ahlstedt)
-* TlsClientConnection: Deprecate property_accepted_cas()
+* TlsClientConnection: Remove property_accepted_cas()
   (Kjell Ahlstedt)
 * ThemedIcon: Add create(const std::vector<Glib::ustring>& iconnames)
   (Kjell Ahlstedt)
 * Remove NO_GTYPE from some _WRAP_ENUMs
   (Kjell Ahlstedt) Issue #37 (Jan Tojnar)
-* TlsConnection: Deprecate rehandshake API
+* TlsConnection: Remove rehandshake API
   (Kjell Ahlstedt)
 * Application: Add signal_name_lost()
   (Kjell Ahlstedt)
 
+Glib and Gio:
+* Use {} for function arguments initialisation
+  (Tapasweni Pathak) Merge request !9
+  Issue #20 (Daniel Boles)
+
 gmmproc:
+* generate_wrap_init.pl.in: Don't exclude any Gtk classes
+  (Kjell Ahlstedt)
+* _WRAP_PROPERTY: generate a static_assert() that checks if
+  the data type is acceptable
+  (Kjell Ahlstedt)
 * Add _IS_REFCOUNTED_BOXEDTYPE
+  (Kjell Ahlstedt)
+* _WRAP_ENUM and _WRAP_GERROR: Add gtype_func parameter
   (Kjell Ahlstedt)
 
 Build:
+* glibmmconfig.h.in: Remove unused configuration constants
+  (Kjell Ahlstedt) Issue #22
 * Require glib-2.0 >= 2.59.2
   (Kjell Ahlstedt)
-
-
-2.58.1 (stable):
-
-gmmproc:
-* _WRAP_ENUM and _WRAP_GERROR: Add gtype_func parameter
-  (Kjell Ahlstedt)
-* docextract_to_xml.py: Add --exclude-file option.
+* Change the ABI to glibmm-2.62
   (Kjell Ahlstedt)
 
 Documentation:
@@ -177,12 +274,8 @@ Documentation:
   (Daniel Boles) Merge request !6
 
 
-2.58.0 (stable):
-
-This release is identical to 2.56.1.
-
-
-2.56.1 (stable):
+2.59.1: (unstable):
+Distro packagers should probably not package this yet.
 
 Glib:
 * ustring: Fix wchar conversion on macOS with libc++
@@ -190,205 +283,525 @@ Glib:
 * Avoid compiler warnings from function pointer conversions
   (Kjell Ahlstedt) Issue libsigcplusplus#1 (sharkcz)
   (Kjell Ahlstedt) Issue libsigcplusplus#8 (db0451)
+* ustring: Simplify format() using C++17 fold expression.
+  (Daniel Boles) Merge request !4
 
 Gio:
+* Application: Add set_option_context_parameter_string(),
+  set_option_context_summary(), set_option_context_description().
+  (Kjell Ahlstedt)
+* DesktopAppInfo: Add get_locale_string()
+  (Kjell Ahlstedt)
 * SocketClient: Take copy in RefPtrs for signal args
   (Daniel Boles) Issue #28 (Jens Mühlenhoff)
+* Make SignalProxy_async_callback() available to e.g. gtkmm
+  (Kjell Ahlstedt)
+
+gmmproc:
+* _WRAP_METHOD: Accept ":" in slot_callback parameter
+  (Kjell Ahlstedt)
 
 Build:
+* Require C++17.
+  (Murray Cumming)
 * Require glib-2.0 >= 2.55.1
   (Kjell Ahlstedt) Issue #29 (Mart Raudsepp)
 * Replace the Visual Studio project files with MSVC NMake project files
-  (Chun-wei Fan) Merge request !5
-
-
-2.56.0 (stable):
-
-Glib:
-* Threads::Private: Fix gobj().
-  (Kjell Ahlstedt) Bug #791711 (octoploid)
-* TimeoutSource: Use monotonic time consistently.
-  (Kjell Ahlstedt) Bug #792524 (Dainis Jonitis)
-* Add RefPtr::get().
-  (Kjell Ahlstedt) Bug #495762 (Hubert Figuiere)
-
-Gio:
-* TlsClientConnection: Deprecate set/get/property_use_ssl3().
-  (Kjell Ahlstedt)
-* DataInputStream: Deprecate read_until().
-  (Kjell Ahlstedt)
-* Application: Add property_resource_base_path_string().
-  This is a replacement for property_resource_base_path() which can't be
-  fixed without breaking ABI.
-  (Kjell Ahlstedt) Bug #787496 (Daniel Boles)
-* Application: Add three set_option_context_*() methods.
-  (Kjell Ahlstedt)
-* DesktopAppInfo: Add get_locale_string().
+  (Chun-wei Fan) Merge request !2
+* Change the ABI to glibmm-2.60
   (Kjell Ahlstedt)
 
 Documentation:
-* Slightly elaborate Glib::Variant<Variant> docs.
-  (Daniel Boles) Bug #778219
+* Use libsigc++-3.0.tag for libsigc++ documentation
+  (Kjell Ahlstedt)
 
-tests:
-* glibmm_variant: Don't use C++14 features when a C++11 compiler is used.
-  (Kjell Ahlstedt, Jonathan Wakely) Bug #787648 (Armin K.)
-* glibmm_interface_move test: Avoid unused function warnings.
-  (Murray Cumming)
+
+2.57.1: (unstable):
+Distro packagers should probably not package this yet.
+
+Gio:
+* DataOutputStream::put_string(): Don't pass std:string by value
+  (Kjell Ahlstedt)
 
 gmmproc:
-* _WRAP_METHOD: Accept optional list of exceptions in errthrow.
-  (Kjell Ahlstedt) Bug #787979 (Daniel Boles)
-* _WRAP_METHOD: Suppress the @return section in generated documentation
-  if return type is void.
-  (Kjell Ahlstedt) Bug #787978 (Daniel Boles)
-* Add _MEMBER_SET_STR macro, setter for strings.
+* Add _MEMBER_SET_STR() macro
   (Pavlo Solntsev) Bug #793778
 
-
-2.54.1 (stable):
-
-Glib:
-* Variant: Don't use std::index_sequence from C++14.
-  (Kjell Ahlstedt, Jonathan Wakely) Bug #787648 (Armin K.)
-
-Documentation:
-* Note that Gio::Application::property_resource_base_path() shall not
-  be used. It has a bug that's hard to fix without breaking ABI.
-  (Kjell Ahlstedt) Bug #787496 (Daniel Boles)
-
-gmmproc:
-* Convert all property documentation to C++.
-  (Kjell Ahlstedt) Bug #787698 (Daniel Boles)
-
-2.54.0 (stable):
-
-Glib:
-* Added DBusObjectPathString and DBusSignatureString, for Variants with D-Bus object paths or D-Bus signatures,
-  and add Variant specializations for Variant<Glib::DBusObjectPathString>,
-  Variant<Glib::DBusSignatureString> and Variant<std::vector<Glib::DBusObjectPathString>>.
-  (Kjell Ahlstedt) Bug #785700
-* Variant: Add template specialization for std::tuple.
-  (Alexander Rössler) Bug #777791
-
-Gio:
-* ActionGroup: Add optional action_name parameters to some signals.
-  (Kjell Ahlstedt)
-* Settings: Add optional key parameter to the writable_changed signal.
+Build:
+* Change the ABI to glibmm-2.58
   (Kjell Ahlstedt)
 
+
+2.55.2: (unstable):
+Distro packagers should probably not package this yet.
+
+Glib:
+* IOCondition: Add an IO_ prefix to the enumerator names
+  (Kjell Ahlstedt)
+* TimeoutSource: Use monotonic time consistently
+  (Kjell Ahlstedt) Bug #792524 (Dainis Jonitis)
+* Source: Remove get_current_time().
+  (Kjell Ahlstedt)
+* KeyFile, OptionContext, Regex: Add exception specs to errthrow.
+  (Kjell Ahlstedt)
+* ustring:
+  - Replace 8×format() with 1 variadic template.
+  - Replace 9×compose() with 1 variadic template.
+  - Use std::initializer_list instead of pointer + size
+  (Daniel Boles) Bug #784211
+* VariantBase:
+  - Add operator==() and operator!=().
+  (Kjell Ahlstedt) Bug #789330 (Daniel Boles)
+  - cast_dynamic(): Remove noexcept(false).
+  (Kjell Ahlstedt)
+
+Glib::Gio:
+* AppInfo: Update the name of the AppLaunchContext parameters
+  (Kjell Ahlstedt)
+* Action: Add exception specs to errthrow.
+  (Kjell Ahlstedt)
+* Application: Fix property_resource_base_path()'s type
+  (Kjell Ahlstedt)
+* Credentials, et al.: Add exception specs to errthrow.
+  (Kjell Ahlstedt)
+* DataInputStream:
+  - Remove read_until*().
+  - Fix the documentation of read_line_utf8().
+  (Kjell Ahlstedt)
+* InetSocketAddress, ProxyAddress: No guint16 in _WRAP_PROPERTY().
+  (Kjell Ahlstedt)
+* Settings: set_int() and friends shall return bool.
+  (Kjell Ahlstedt) Bug #784211
+* TlsClientConnection: Remove get/set/property_use_ssl3().
+  (Kjell Ahlstedt)
+
 gmmproc:
-* Write signal flags to generated documentation
-  (Kjell Ahlstedt) Bug #785895 (Daniel Boles)
-* Write default values of properties to generated documentation
+* Warn if parameter lists are not compatible
+  (Kjell Ahlstedt)
+* _WRAP_METHOD: Accept optional list of exceptions in errthrow
+  (Kjell Ahlstedt)
+* _WRAP_METHOD_DOCS_ONLY: Optionally suppress @return section.
+  (Kjell Ahlstedt) Bug #787978
+* docextract_to_xml.py: Add --exclude-file option.
+  (Kjell Ahlstedt)
+* Suppress the @return section if return type is void.
+  (Kjell Ahlstedt)
+* generate_extra_defs.cc:
+  - Write signal flags to .defs files.
+  - Write default values of properties to .defs files.
+  - Write default values of properties to generated documentation.
   (Kjell Ahlstedt) Bug #785895 (Daniel Boles)
 * Warn for unmatched deprecations in signals and properties.
   (Kjell Ahlstedt)
-* Accept curly braces in default values in _WRAP macros.
-  (Kjell Ahlstedt) Bug #783216 comment #13 (Daniel Boles)
-* Fix _WRAP_ENUM for enumerators with apostrophes.
-  (Kjell Ahlstedt)
-* Add new elements types for the docs_override:
-  substitute_type_name and substitute_enumerator_name.
-  (Kjell Ahlstedt) Bug #86864
-
-
-2.52.1 (stable):
-
-Gio:
-* TlsDatabase: Fix memory leak in a vfunc.
-  (Kjell Ahlstedt) Bug #783360
 
 Documentation:
-* Update docs of get_*_name().
-  (Daniel Boles)
+* Glib::ObjectBase: Don't mention GtkObject in comments.
+  (Kjell Ahlstedt)
+* Glib::Variant: Hide namespace Glib::detail from Doxygen
+  (Kjell Ahlstedt) Bug #787698 (Daniel Boles)
+* Glib::Variant: Slightly elaborate Variant<Variant> docs.
+  (Daniel Boles) Bug #778219 (Daniel Boles)
 
-Build:
-* MacOS: Really correct build without gdesktopinfo.
-  (Kjell Ahlstedt) Bug #781947
 
-2.52.0 (stable):
+2.55.1: (unstable):
+Distro packagers should probably not package this yet.
+
+Glib:
+* Object: Value_Pointer class should take only one template argument.
+  (Marcin Kolny)
+* Variant: Improved support for D-Bus object paths and signatures.
+  (Kjell Ahlstedt) Bug #785700 (Johannes Dohmen)
+* Glib::Value_Flags<>: static_cast to correct type.
+  (Kjell Ahlstedt)
 
 Gio:
-* UnixSocketAddress::create(): Remove the default value for the type
-  parameter to avoid ambiguity.
+* Derive all interfaces directly from Glib::Interface
+  (Kjell Ahltedt) Bug #776537
+* Application: OptionType: Make this an enum class.
+  (Kjell Ahlstedt)
+* BufferedInputStream, BufferedOutputStream, DataOutputStream:
+  Implement Seekable.
+* CharsetConverter: Implement the Gio::Initable interface.
+  and call Initable::init() from CharsetConverter's constructor.
+  (Kjell Ahlstedt) Bug #776537
+* Add FileDescriptorBased interface and make GUnixInputStream and
+  GUnixOutputStream implement it.
+* MemoryInputStream, UnixInputStream: Implement PollableInputStream.
+  (Kjell Ahlstedt)
+* MemoryOutputStream, UnixOutputStream: Implement PollableOutputStream.
+  (Kjell Ahlstedt)
+* TlsDatabase: create_certificate_handle_vfunc():
+  Fix memory leak, and correctly return nulltpr.
+  (Kjell Ahlstedt) Bug #783360
+
+gmmproc:
+* Accept curly braces in default values in _WRAP macros
+  (Khell Ahlstedt) Bug #783216 comment 13
+* Don't accept unpaired double quotes.
+  (Khell Ahlstedt)
+* gmmproc: Fix _WRAP_ENUM for enumerators with apostrophes.
+  (Khell Ahlstedt)
+* gmmproc, _WRAP_ENUM: Add optional CONV_TO_INT parameter.
+  (Khell Ahlstedt)
+
+Build:
+* Change the ABI to glibmm-2.56.
+  (Murray Cumming)
+* Really exclude DesktopAppInfo from wrap_init.cc on MacOS.
+  (Kjell Ahlstedt) Bug #781947
+
+Documentation:
+* miscutils: Update docs of get_*_name() from GLib.
+  (Daniel Boles)
+* Fix documentation of enum Glib::IOCondition.
+  (Khell Ahlstedt)
+
+
+2.53.2 (unstable):
+Distro packagers should probably not package this yet.
+
+Glib:
+* ConstructParams: Do not increment allocation size twice
+  (Daniel Elstner)
+
+Gio:
+* ActionMap: Really fix add_action_with_parameter().
+  (Daniel Boles) Bug 774444#c31
+* UnixSocketAddress::create(): Remove a default value to avoid ambiguity.
   (Kjell Ahlstedt) Bug #782592
 
 Gio::DBus
 * Proxy: Wrap call() and call_sync() methods.
   (Vyacheslav Yurkov) Bug #781818
 
+gmmproc:
+* Use of static_cast<> instead of C-style casts.
+  (Murray Cumming)
+
+Build:
+* Fix the build on MacOS, where glib doesn't have gdesktopinfo.
+  (John Ralls) Bug #781947
+* Really use desktopappinfo.hg to fix the build.
+  (Murray Cumming)
+
 Documentation:
-* RefPtr: Clarify comment about undefined behaviour.
+* Glib, Gio: Update documentation of in-class enums.
+  (Kjell Ahlstedt)
+* ActionMap: Improve add_action_with_parameter docs
   (Daniel Boles)
 
-2.51.7 (unstable):
+
+2.53.1.1 (unstable):
 
 Glib:
-* SettingsSchemaKey: Add missing value/range methods.
-  (Daniel Boles) Bug #774903
-* Variant: Replace throw(std::bad_cast) with noexcept(false),
-  to fix the build with C++17.
-  See https://bugzilla.redhat.com/show_bug.cgi?id=1438766
+* Use C++11 enum classes instead of old-style enums, and put many enums
+  inside relevant class declarations:
+  - Glib::NodeTree: Move enums into class.
+  - Glib::BindingFlags is now Glib::Binding::Flags.
+  - Glib::KeyfileFlags is now Glib::Keyfile::Flags.
+  - Glib::ModuleFlags is now Glib::Module::Flags.
+  - Glib::ChecksumType is now Glib::Checksum::Type.
+  - Glib::Regex: Move enums inside class.
+  - Glib::Resource: Move enums into class.
+  (Murray Cumming, Kjell Ahlstedt)
+* RefPtr: Make this an alias for std::shared_ptr<> instead.
+  - Use std::dynamic_pointer_cast<>() instead of RefPtr<>::cast_dynamic().
+  - Use std::static_pointer_cast<>() instead of RefPtr<>::cast_static().
+  - Use std::const_pointer_cast<>() instead of RefPtr<>::cast_const().
+  - When creating RefPtr directly, instead of using create() methods,
+    use Glib::make_refptr_for_instance() so the std::shared_ptr<> has the
+    necessary Deleter.
+  (Murray Cumming) Bug #755037
+* Remove Glib::WeakRef. Use std::weak_ref<> instead.
+  (Murray Cumming) Bug #755037
+* Object: Use g_object_new_with_properties() instead of (deprecated)
+  g_object_newv() and (deprecated) GParameter.
   (Murray Cumming)
-* VariantType: Deprecate first() and next(). Add get_item_types()
-  (Kjell Ahlstedt) Bug #775741
+* IOChannel: Avoid creating a RefPtr to this.
+  (Murray Cumming) Bug #755037
+* SignalProxy:
+  connect(): Signals with non-void return values now have no default value
+  for the "after" parameter, forcing application developers to think about
+  whether they should connect before or after already-connected signal
+  handlers, and default signal handlers. This is awkward but necessary.
+  Just provide "true" to get the previous behaviour, or use connect_notify().
+  connect_notify(): Signals with void return values have no connect_notify(),
+  because it is not useful with those signals.
+  (Kjell Ahlstedt) Bug #126213.
 
 Gio:
-* ActionMap: Add add_action_with_parameter() that takes a parameter type,
-  and deprecated the existing method, because it cannot work.
-  (Daniel Boles) Bug #774444
+* Use C++11 enum classes instead of old-style enums, and put many enums
+  inside relevant class declarations:
+  - Gio::Drive: Move enums into class.
+  - Gio::TlsDatabase: Move enums into class.
+  - Gio::UnixSocketAddressType is now Gio::UnixSocketAddress::Type.
+  - Gio::Mount: Move enums into class.
+  - Gio::TlsPasswordFlags is now Gio::TlsPassword::Flags.
+  - Gio::IOStreamSpliceFlags is now Gio::IOStream::SpliceFlags.
+  - Gio::SettingsBindFlags is now Gio::Settings::BindFlags.
+  - Gio::ResolverRecordType is now Gio::Resolver::RecordType.
+  - Gio::Socket: Move enums into class.
+  - Gio::File: Move some flags enums into the class.
+  - Gio::OutputStreamSpliceFlags is now Gio::OuputStream::SpliceFlags.
+  - Gio::CredentialsType is now Gio::Credentials::Type.
+  - Gio::NotificationPriority is now Gio::Notification::Priority.
+  - Gio::FileMonitorEvent is now Gio::FileMonitor::Event.
+  - Gio::FileAttributeInfoFlags is now Gio::FileAttributeInfo::Flags.
+  - Gio::EmblemOrigin is now Gio::Emblem::Origin.
+  - Gio::Converter: Put enums inside class.
+  - Gio::ConverterFlags is now Gio::Converter::Flags.
+  - Gio::ConverterResult is now Gio::Converter::Result.
+  - Gio::AppInfoCreateFlags is now Gio::AppInfo::CreateFlags.
+  - Gio::ApplicationFlags is now Gio::Application::Flags.
+  (Murray Cumming, Kjell Ahlstedt)
+* Remove duplicate ErrorEnum declaration.
+  (Kjell Ahlstedt)
+* ConstructParams:
+  - Remove (hopefully really unnecessary) copy constructor.
+  - C++11: =delete the operator=, instead of making it private.
+  (Murray Cumming)
+* Value:
+  - Remove the CType alias, which should be unnecessary.
+  - value_custom: Replace a template parameter with C++11 type traits.
+  - Value<RefPtr<T>>: Only use this specialization if T has get_base_type().
+  (Murray Cumming) Bug #755037
+* Variant:
+  - operator bool(): Simplify to avoid clang++ warnings.
+  - C++11: Variant: Replace throw(std::bad_cast) with noexcept(false).
+    See https://bugzilla.redhat.com/show_bug.cgi?id=1438766
+  (Murray Cumming)
+* Socket: Avoid creating a RefPtr to this.
+  (Murray Cumming) Bug #755037
+
+Gio:DBus:
+* Use C++11 enum classes instead of old-style enums, and put many enums
+  inside relevant class declarations:
+  - Gio::DBus::InterfaceSkeletonFlags is now Gio::DBus::InterfaceSkeleton::Flags.
+  - Gio::DBus::ServerFlags is now Gio::DBus::Server::Flags.
+  (Murray Cumming, Kjell Ahlstedt)
+
+gmmproc:
+* _WRAP_ENUM(): Generate C++ enum classes instead of enums, and let the enums
+  be inside class declarations.
+  (Kjell Ahlstedt) Bug #86864
+
+Build
+* Windows:  Visual Studio builds: Update ABI version
+  (Chun-wei Fan)
+
+
+2.53.1 (unstable):
+
+Glib:
+* OptionGroup:
+  - Don't allow copy or move.
+  - Remove the OptionGroup& parameter in on_pre_parse(), on_post_parse() and
+    on_error().
+  (Kjell Ahlstedt)
+* IOChannel, StreamIOChannel: Remove deprecated parts.
+  (Kjell Ahlstedt)
+* ustring: Add make_valid().
+  (Krzysztof Piecuch) Bug #780075
+* Remove (unused) Sequence and sequence().
+  (Murray Cumming)
+* Remove ListHandle, SListHandle, ArrayHandle, SArrayHandle, and
+  StringArrayHandle, replacing them with std::vector in API.
+  (Murray Cumming)
+
+gmmproc:
+* _WRAP_METHOD(): Some more use of auto in generated code.
+  (Murray Cumming)
+
+Build:
+* Change the ABI to glibmm-2.54.
+  (Murray Cumming)
+* Add some #include directives.
+  (Kjell Ahlstedt)
+* Visual Studio: Require Visual Studio 2017 and update the glibmm project.
+  (Chu-wei Fan)
+
+
+2.51.5
+
+Gio:
+* Application: get_default(): Correct the reference counting.
+  (KJell Ahlstedt) Bug #779936 (James Legg)
+* Add PropertyAction.
+  (Kjell Ahlstedt)
+
+Glib:
+* Remove Glib::unconst() because it is unused and unnecessary.
+  (Kjell Ahlstedt)
+* Variant: Add template specialization for std::tuple,
+  and a test.
+  (Alexander Rössler, Kjell Ahlstedt) Bug #777791
+
+
+2.51.2 (unstable):
+Distro packagers should probably not package this yet.
+
+Glib:
+* Object construction: Add custom class init and instance init functions
+  An extra class init function is useful in Gtk::WidgetCustomDraw and
+  Gtk::WidgetCustomSnapshot.
+  (Kjell Ahlstedt) Bug #775348
+
+Gio:
+* Action: #include <glibmm/variant.h>, for convenience.
+  (Daniel Boles) Bug #777953
 * SimpleAction: Make set_state() public.
   (Daniel Boles) Bug #777953
 
-Build:
-* MacOS: Correct build without gdesktopinfo.
-  (John Ralls) Bug #781947
-* Glib::Object: Suppress deprecation warning for g_object_newv() with glib 2.54.
-  (Kjell Ahlstedt)
+Documentation:
+* Glib::Variant: Explain how to create "maybe" type.
+  (Daniel Boles) Bug #778219
 
 
-2.51.6 (unstable):
-
-This is version 2.51.6 of glibmm-2.24. Ignore versions 2.51.1 to 2.51.5 of
-unstable glibmm-2.52. Unstable glibmm-2.52 is now unstable glibmm-2.54,
-leaving the 2.51/52 version numbers again for use by stable glibmm-2.52.
+2.51.1.2 (unstable):
+Distro packagers should probably not package this yet.
 
 Glib:
-* Dispatcher:
-  - autodeduce the type of the fd field.
-  (Marcin Kolny) Bug #772074
-  - Don't cast a HANDLE to an int on Windows.
-  (Kjell Ahlstedt) Bug #772074
-* ustring: Add cbegin() and cend().
-  (Murray Cumming)
+* Remove some deprecated API
+  (Kjell Ahlstedt)
+* Variant: Remove the string specializations of cast_dynamic.
+  (Kjell Ahlstedt)
+* Glib::VariantType: Add get_item_types(), removing first() and
+  next().
+  (Kjell Ahlstedt) Bug #775741
+
 
 Gio:
-* Action: Include variant.h in the heaer.
-  (Daniel Boles) Bug #777953
-* Application: get_default(): Correct the reference counting.
-  (Kjell Ahlstedt) Bug #779936
-* Settings:
-  - Really add set_enum() and set_flags().
-  (djb) Bug #774647
-  - Writable-change-event signal: Correct the type of the key parameter.
-  (Marcin Kolny) Bug #773977
-* SettingsSchemaSource: get_default(): Correct the refcounting.
-  (Marcin Kolny) Bug #774593
-
-Gio::DBus:
-* Proxy: Fix memory leak in get_cached_property_names().
-  (Kjell Ahlstedt) Bug #775210
+* init(): Set the global locale.
+  (Kjell Ahlstedt) Bug #661588
+* ActionBase: get_state_hint_variant() now returns VariantContainerBase.
+  (Kjell Ahlstedt)
+* ActionMap: add_action_with_parameter(): Register the parameter type,
+  to make this work.
+  (Daniel Boles) Bug #774444
+* ActionResult: Add is_tagged_vfunc().
+  (Kjell Ahlstedt)
+* Glib::Dispatcher: Implement the pimpl idiom
+  (Kjell Ahlstedt) Bug #651942
+* File, FileInfo, FileIOStream, FileOutputStream: Use Glib::ustring for
+  (UTF-8) file attributes of string type.
+  (Kjell Ahlstedt) Bug #615950
+* NetworkMonitor: Derive from Gio::Initable.
+  (Kjell Ahlstedt)
+* RemoteActionGroup: Rename some vfuncs to add _full().
+  (Murray Cumming)
 
 Documentation:
-* Glib::Variant: Improve documentation of maybe types.
-  (Daniel Boles) Bug #778219
-* Gio::ActionMap: Clarify doc of ActivateWithParameterSlot
-  (Daniel Boles)
+* ActionMap:
+  - ActivateSlot: Mention add_action_bool().
+  - ActivateWithParameterSlot: Be more specific.
+  (Daniel Boles) Bug #774444
 
 Build:
-* Visual Studio builds: "Install" the .pdb files
+* Update the Visual Studio project files.
   (Chun-wei Fan)
+* Some minor cppcheck fixes.
+  (Murray Cumming)
+
+
+2.51.1.1 (unstable):
+
+General:
+* Remove no_default_handler in some _WRAP_SIGNAL()s
+  This allows application developers to simply override
+  the default on_*() signal handlers for these signals too,
+  as they can already with most other signals.
+  If you are using, for instance, the -Wsuggest-override
+  compiler option, watch out for new compiler warnings suggesting
+  that your existing signal handler should now be marked with the
+  override keyword - that means you should do so but you should
+  also stop connecting the signal handler in your code.
+  (Kjell Ahlstedt)
+* Build: examples/Makefile.am: Re-insert the dispatcher examples
+  (Kjell Ahlstedt)
+
+Glib:
+* Dispatcher: Don't cast a HANDLE to an int on Windows.
+  (Kjell Ahlstedt) Bug #772074
+* ObjectBase:
+  - Remove connect_property_changed_with_return()
+  and let connect_property_changed() return a sigc::connection.
+  (Kjell Ahlstedt)
+  - Use std::forward_list for interface class pointers.
+  (Kjell Ahlstedt)
+  - Replace extra_object_base_data map by instance data.
+  (Kjell Ahlstedt)
+* ObjectBase: overload get_property().
+  (Marcin Kolny)
+* Main, IOSource: autodeduce type of fd field.
+  (Marcin Kolny) Bug #770274
+* Settings: Add property_settings_schema(), and update
+  signal_changed().
+  (Kjell Ahlstedt)
+* Settings: Make set_enum() + set_flags() usable
+  (djb) Bug #774647
+* SettingsSchemaKey: Add missing value/range methods
+  (Daniel Boles) Bug #774903
+* SignalProxyNormal: Remove connect_() and connect_notify_(),
+  adding connect_impl().
+  (Kjell Ahlstedt)
+* Rename SignalProxyDetailed to SignalProxyDetailedBase, and
+  SignalProxyDetailedAnyType to SignalProxyDetailed.
+  Remove SignalProxyDetailed# aliases (# = 0..6).
+  (Kjell Ahlstedt)
+* Source: Replace extra_source_data by instance data.
+  (Kjell Ahlstedt) Bug #561885
+
+Gio:
+* ActionMap::add_action_vfunc(): Const correction.
+  (Murray Cumming)
+* Application: Add dbus_register/unregister_vfunc.
+  (Ritesh Khadgaray, Kjell Ahlstedt) Bug #762191
+* Menu: insert/prepend/add_item(): Const correction.
+  (Murray Cumming)
+* MenuAttributeIter: get_value(): Const correction.
+  (Murray Cumming)
+* MenuModel: get_item_atribute(): const correction.
+  (Murray Cumming)
+* RemoteActionGroup: Derive from Gio::ActionGroup.
+  (Murray Cumming)
+
+Gio::Dbus:
+* Proxy: Fix memory leak in get_cached_property_names().
+  (Kjell Ahlstedt) Bug #775210
+* Proxy: Derive from (and implement) Gio::DBus::Interface.
+  (Murray Cumming)
+
+
+2.51.1 (unstable):
+
+This is the first release of the glibmm-2.52 API/ABI.
+It installs in parallel with the gtkmm-2.4 API/ABI, of which
+the most recent version is glibmm 2.50. We know that is a bit
+confusing. We are taking the opportunity to do this glibmm ABI
+break while GTK+ (and therefore gtkmm) is also doing an ABI
+break. But we cannot call this glibmm-3.0 because there is no
+glib 3.0.
+
+Build:
+* Require C++14.
+  (Murray Cumming)
+* Use libsigc++-3.0 instead of libsigc++-2.0.
+  https://www.murrayc.com/permalink/2016/03/07/libsigc-3-0-very-variadic/
+  (Murray Cumming)
+* Remove lots of deprecated API.
+  (Kjell Ahlstedt)
+
+Gio:
+* BufferedInputStream, InputStream, OutputStream: Add vfuncs,
+  allowing implementation in C++.
+  (Krzysztof Kosiński, Kjell Ahlstedt) Bug #572471
+* SettingsSchemaSource::get_default(): Correct the reference count.
+  (Marcin Kolny) Bug #774593
+* Settings: Fix type of 'key' parameter of writable-change-event signal
+  (Marcin Kolny) Bug #773977
+
+Glib:
+* ustring: Add cbegin() and cend().
 
 
 2.50.0:
@@ -431,7 +844,7 @@ gmmproc:
 * Remove DocsParser::non_object_method_name()
   (Kjell Ahlstedt)
 * swap() implementations: Use std::swap().
-  (Murray Cumming <murrayc@murrayc.com>
+  (Murray Cumming)
 
 Documentation:
 * Gio::SocketService: Update the class documentation

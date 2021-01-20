@@ -1,0 +1,4 @@
+2.68.0
+doxygen
+pkgconfig(mm-common-libstdc++)
+pkgconfig(sigc++-3.0)
