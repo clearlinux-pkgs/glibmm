@@ -531,6 +531,7 @@ libgiomm-2.68.so.1:_ZN3Gio12MenuLinkIterD1Ev
 libgiomm-2.68.so.1:_ZN3Gio12MenuLinkIterD2Ev
 libgiomm-2.68.so.1:_ZN3Gio12MenuLinkIteraSEOS0_
 libgiomm-2.68.so.1:_ZN3Gio12Notification10add_buttonERKN4Glib7ustringES4_
+libgiomm-2.68.so.1:_ZN3Gio12Notification12set_categoryERKN4Glib7ustringE
 libgiomm-2.68.so.1:_ZN3Gio12Notification12set_priorityENS0_8PriorityE
 libgiomm-2.68.so.1:_ZN3Gio12Notification13get_base_typeEv
 libgiomm-2.68.so.1:_ZN3Gio12Notification18add_button_variantERKN4Glib7ustringES4_RKNS1_11VariantBaseE
@@ -3735,6 +3736,7 @@ libgiomm-2.68.so.1:_ZN3Gio8FileInfo18set_attribute_maskERKSt10shared_ptrINS_20Fi
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo18set_symlink_targetERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo19set_attribute_int32ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo19set_attribute_int64ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEl
+libgiomm-2.68.so.1:_ZN3Gio8FileInfo20set_access_date_timeERKN4Glib8DateTimeE
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo20set_attribute_objectERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt10shared_ptrIN4Glib6ObjectEE
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo20set_attribute_statusERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_19FileAttributeStatusE
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo20set_attribute_stringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKN4Glib7ustringE
@@ -3743,6 +3745,7 @@ libgiomm-2.68.so.1:_ZN3Gio8FileInfo20set_attribute_uint64ERKNSt7__cxx1112basic_s
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo20unset_attribute_maskEv
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo21set_attribute_booleanERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo21set_attribute_stringsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIN4Glib7ustringESaISB_EE
+libgiomm-2.68.so.1:_ZN3Gio8FileInfo22set_creation_date_timeERKN4Glib8DateTimeE
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo25set_attribute_byte_stringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo26set_modification_date_timeERKN4Glib8DateTimeE
 libgiomm-2.68.so.1:_ZN3Gio8FileInfo8get_iconEv
@@ -4352,6 +4355,7 @@ libgiomm-2.68.so.1:_ZN4Glib5ValueIN3Gio17FileAttributeInfo5FlagsEvE10value_typeE
 libgiomm-2.68.so.1:_ZN4Glib5ValueIN3Gio17FileAttributeTypeEvE10value_typeEv
 libgiomm-2.68.so.1:_ZN4Glib5ValueIN3Gio17SocketClientEventEvE10value_typeEv
 libgiomm-2.68.so.1:_ZN4Glib5ValueIN3Gio17UnixSocketAddress4TypeEvE10value_typeEv
+libgiomm-2.68.so.1:_ZN4Glib5ValueIN3Gio18TlsProtocolVersionEvE10value_typeEv
 libgiomm-2.68.so.1:_ZN4Glib5ValueIN3Gio19DataStreamByteOrderEvE10value_typeEv
 libgiomm-2.68.so.1:_ZN4Glib5ValueIN3Gio19FileAttributeStatusEvE10value_typeEv
 libgiomm-2.68.so.1:_ZN4Glib5ValueIN3Gio19NetworkConnectivityEvE10value_typeEv
@@ -4564,12 +4568,16 @@ libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection12get_databaseEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection15get_certificateEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection15get_interactionEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection17property_databaseEv
+libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection20get_ciphersuite_nameEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection20get_peer_certificateEv
+libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection20get_protocol_versionEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection20property_certificateEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection20property_interactionEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection23property_base_io_streamEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection24get_require_close_notifyEv
+libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection25property_ciphersuite_nameEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection25property_peer_certificateEv
+libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection25property_protocol_versionEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection27get_peer_certificate_errorsEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection29property_require_close_notifyEv
 libgiomm-2.68.so.1:_ZNK3Gio13TlsConnection32property_peer_certificate_errorsEv
@@ -4644,9 +4652,17 @@ libgiomm-2.68.so.1:_ZNK3Gio14SimpleIOStream22property_output_streamEv
 libgiomm-2.68.so.1:_ZNK3Gio14SocketListener23property_listen_backlogEv
 libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate10get_issuerEv
 libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate12verify_vfuncERKSt10shared_ptrIKNS_17SocketConnectableEERKS1_IKS0_E
+libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate15get_issuer_nameEv
 libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate15property_issuerEv
+libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate16get_subject_nameEv
+libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate19get_not_valid_afterEv
+libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate20get_not_valid_beforeEv
 libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate20property_certificateEv
+libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate20property_issuer_nameEv
+libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate21property_subject_nameEv
 libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate24property_certificate_pemB5cxx11Ev
+libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate24property_not_valid_afterEv
+libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate25property_not_valid_beforeEv
 libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate6verifyERKSt10shared_ptrIKNS_17SocketConnectableEE
 libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate6verifyERKSt10shared_ptrIKNS_17SocketConnectableEERKS1_IKS0_E
 libgiomm-2.68.so.1:_ZNK3Gio14TlsCertificate6verifyERKSt10shared_ptrIKS0_E
@@ -5125,6 +5141,7 @@ libgiomm-2.68.so.1:_ZNK3Gio8FileInfo18get_attribute_typeERKNSt7__cxx1112basic_st
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo18get_symlink_targetB5cxx11Ev
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo19get_attribute_int32ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo19get_attribute_int64ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+libgiomm-2.68.so.1:_ZNK3Gio8FileInfo20get_access_date_timeEv
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo20get_attribute_objectERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo20get_attribute_statusERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo20get_attribute_stringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
@@ -5132,6 +5149,7 @@ libgiomm-2.68.so.1:_ZNK3Gio8FileInfo20get_attribute_uint32ERKNSt7__cxx1112basic_
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo20get_attribute_uint64ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo21get_attribute_booleanERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo21get_attribute_stringsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+libgiomm-2.68.so.1:_ZNK3Gio8FileInfo22get_creation_date_timeEv
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo23get_attribute_as_stringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo25get_attribute_byte_stringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 libgiomm-2.68.so.1:_ZNK3Gio8FileInfo26get_modification_date_timeEv
@@ -6206,6 +6224,7 @@ libglibmm-2.68.so.1:_ZN4Glib5Regex9match_allENS_11UStringViewEliRNS_9MatchInfoEN
 libglibmm-2.68.so.1:_ZN4Glib5Timer4stopEv
 libglibmm-2.68.so.1:_ZN4Glib5Timer5resetEv
 libglibmm-2.68.so.1:_ZN4Glib5Timer5startEv
+libglibmm-2.68.so.1:_ZN4Glib5Timer6resumeEv
 libglibmm-2.68.so.1:_ZN4Glib5TimerC1Ev
 libglibmm-2.68.so.1:_ZN4Glib5TimerC2Ev
 libglibmm-2.68.so.1:_ZN4Glib5TimerD1Ev
@@ -6343,6 +6362,8 @@ libglibmm-2.68.so.1:_ZN4Glib6getenvB5cxx11ENS_13StdStringViewE
 libglibmm-2.68.so.1:_ZN4Glib6getenvB5cxx11ENS_13StdStringViewERb
 libglibmm-2.68.so.1:_ZN4Glib6setenvENS_13StdStringViewES0_b
 libglibmm-2.68.so.1:_ZN4Glib6usleepEm
+libglibmm-2.68.so.1:_ZN4Glib7Binding10dup_sourceEv
+libglibmm-2.68.so.1:_ZN4Glib7Binding10dup_targetEv
 libglibmm-2.68.so.1:_ZN4Glib7Binding10get_sourceEv
 libglibmm-2.68.so.1:_ZN4Glib7Binding10get_targetEv
 libglibmm-2.68.so.1:_ZN4Glib7Binding13get_base_typeEv
@@ -6360,6 +6381,12 @@ libglibmm-2.68.so.1:_ZN4Glib7BindingD0Ev
 libglibmm-2.68.so.1:_ZN4Glib7BindingD1Ev
 libglibmm-2.68.so.1:_ZN4Glib7BindingD2Ev
 libglibmm-2.68.so.1:_ZN4Glib7BindingaSEOS0_
+libglibmm-2.68.so.1:_ZN4Glib7Environ3setENS_13StdStringViewES1_b
+libglibmm-2.68.so.1:_ZN4Glib7Environ5unsetENS_13StdStringViewE
+libglibmm-2.68.so.1:_ZN4Glib7EnvironC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EE
+libglibmm-2.68.so.1:_ZN4Glib7EnvironC1Ev
+libglibmm-2.68.so.1:_ZN4Glib7EnvironC2ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EE
+libglibmm-2.68.so.1:_ZN4Glib7EnvironC2Ev
 libglibmm-2.68.so.1:_ZN4Glib7KeyFile10remove_keyERKNS_7ustringES3_
 libglibmm-2.68.so.1:_ZN4Glib7KeyFile10set_doubleERKNS_7ustringES3_d
 libglibmm-2.68.so.1:_ZN4Glib7KeyFile10set_doubleERKNS_7ustringEd
@@ -6628,6 +6655,7 @@ libglibmm-2.68.so.1:_ZN4Glib8SignalIO7connectERKN4sigc4slotIFbNS_11IOConditionEE
 libglibmm-2.68.so.1:_ZN4Glib8SignalIO7connectERKN4sigc4slotIFbNS_11IOConditionEEJEEEiS3_i
 libglibmm-2.68.so.1:_ZN4Glib8TimeZone10create_utcEv
 libglibmm-2.68.so.1:_ZN4Glib8TimeZone12create_localEv
+libglibmm-2.68.so.1:_ZN4Glib8TimeZone17create_identifierERKNS_7ustringE
 libglibmm-2.68.so.1:_ZN4Glib8TimeZone4swapERS0_
 libglibmm-2.68.so.1:_ZN4Glib8TimeZone6createERKNS_7ustringE
 libglibmm-2.68.so.1:_ZN4Glib8TimeZone8get_typeEv
@@ -6909,6 +6937,7 @@ libglibmm-2.68.so.1:_ZNK4Glib5Regex9gobj_copyEv
 libglibmm-2.68.so.1:_ZNK4Glib5Regex9referenceEv
 libglibmm-2.68.so.1:_ZNK4Glib5Timer7elapsedERm
 libglibmm-2.68.so.1:_ZNK4Glib5Timer7elapsedEv
+libglibmm-2.68.so.1:_ZNK4Glib5Timer9is_activeEv
 libglibmm-2.68.so.1:_ZNK4Glib5ValueINS_11VariantBaseEvE3getEv
 libglibmm-2.68.so.1:_ZNK4Glib5ValueINS_11VariantTypeEvE3getEv
 libglibmm-2.68.so.1:_ZNK4Glib5ValueINS_5ErrorEvE3getEv
@@ -6952,6 +6981,8 @@ libglibmm-2.68.so.1:_ZNK4Glib6Source6get_idEv
 libglibmm-2.68.so.1:_ZNK4Glib6Source8get_timeEv
 libglibmm-2.68.so.1:_ZNK4Glib6Source9gobj_copyEv
 libglibmm-2.68.so.1:_ZNK4Glib6Source9referenceEv
+libglibmm-2.68.so.1:_ZNK4Glib7Binding10dup_sourceEv
+libglibmm-2.68.so.1:_ZNK4Glib7Binding10dup_targetEv
 libglibmm-2.68.so.1:_ZNK4Glib7Binding10get_sourceEv
 libglibmm-2.68.so.1:_ZNK4Glib7Binding10get_targetEv
 libglibmm-2.68.so.1:_ZNK4Glib7Binding14property_flagsEv
@@ -6962,6 +6993,8 @@ libglibmm-2.68.so.1:_ZNK4Glib7Binding19get_target_propertyEv
 libglibmm-2.68.so.1:_ZNK4Glib7Binding24property_source_propertyEv
 libglibmm-2.68.so.1:_ZNK4Glib7Binding24property_target_propertyEv
 libglibmm-2.68.so.1:_ZNK4Glib7Binding9get_flagsEv
+libglibmm-2.68.so.1:_ZNK4Glib7Environ3getB5cxx11ENS_13StdStringViewE
+libglibmm-2.68.so.1:_ZNK4Glib7Environ9to_vectorB5cxx11Ev
 libglibmm-2.68.so.1:_ZNK4Glib7KeyFile10get_doubleERKNS_7ustringE
 libglibmm-2.68.so.1:_ZNK4Glib7KeyFile10get_doubleERKNS_7ustringES3_
 libglibmm-2.68.so.1:_ZNK4Glib7KeyFile10get_groupsEv
@@ -7133,6 +7166,7 @@ libglibmm-2.68.so.1:_ZNK4Glib8TimeZone14get_identifierEv
 libglibmm-2.68.so.1:_ZNK4Glib8TimeZone16get_abbreviationEi
 libglibmm-2.68.so.1:_ZNK4Glib8TimeZone6is_dstEi
 libglibmm-2.68.so.1:_ZNK4Glib8TimeZone9gobj_copyEv
+libglibmm-2.68.so.1:_ZNK4Glib8TimeZonecvbEv
 libglibmm-2.68.so.1:_ZNK4Glib9ByteArray11unreferenceEv
 libglibmm-2.68.so.1:_ZNK4Glib9ByteArray4gobjEv
 libglibmm-2.68.so.1:_ZNK4Glib9ByteArray4sizeEv
