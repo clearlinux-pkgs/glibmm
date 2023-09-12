@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : glibmm
-Version  : 2.76.0
-Release  : 30
-URL      : https://download.gnome.org/sources/glibmm/2.76/glibmm-2.76.0.tar.xz
-Source0  : https://download.gnome.org/sources/glibmm/2.76/glibmm-2.76.0.tar.xz
+Version  : 2.78.0
+Release  : 31
+URL      : https://download.gnome.org/sources/glibmm/2.78/glibmm-2.78.0.tar.xz
+Source0  : https://download.gnome.org/sources/glibmm/2.78/glibmm-2.78.0.tar.xz
 Summary  : C++ wrapper for GLib
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -56,25 +56,30 @@ license components for the glibmm package.
 
 
 %prep
-%setup -q -n glibmm-2.76.0
-cd %{_builddir}/glibmm-2.76.0
+%setup -q -n glibmm-2.78.0
+cd %{_builddir}/glibmm-2.78.0
+pushd ..
+cp -a glibmm-2.78.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680025328
+export SOURCE_DATE_EPOCH=1694529735
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+ninja -v -C builddiravx2
 
 %check
 export LANG=C.UTF-8
@@ -87,7 +92,9 @@ make test || :
 mkdir -p %{buildroot}/usr/share/package-licenses/glibmm
 cp %{_builddir}/glibmm-%{version}/COPYING %{buildroot}/usr/share/package-licenses/glibmm/10b7ed0f3f2cfe72fe0c64c167033cbbf8e62d93 || :
 cp %{_builddir}/glibmm-%{version}/COPYING.tools %{buildroot}/usr/share/package-licenses/glibmm/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -348,6 +355,8 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/include/giomm-2.68/giomm/private/socketlistener_p.h
 /usr/include/giomm-2.68/giomm/private/socketservice_p.h
 /usr/include/giomm-2.68/giomm/private/srvtarget_p.h
+/usr/include/giomm-2.68/giomm/private/subprocess_p.h
+/usr/include/giomm-2.68/giomm/private/subprocesslauncher_p.h
 /usr/include/giomm-2.68/giomm/private/tcpconnection_p.h
 /usr/include/giomm-2.68/giomm/private/tcpwrapperconnection_p.h
 /usr/include/giomm-2.68/giomm/private/themedicon_p.h
@@ -398,6 +407,8 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/include/giomm-2.68/giomm/socketservice.h
 /usr/include/giomm-2.68/giomm/socketsource.h
 /usr/include/giomm-2.68/giomm/srvtarget.h
+/usr/include/giomm-2.68/giomm/subprocess.h
+/usr/include/giomm-2.68/giomm/subprocesslauncher.h
 /usr/include/giomm-2.68/giomm/tcpconnection.h
 /usr/include/giomm-2.68/giomm/tcpwrapperconnection.h
 /usr/include/giomm-2.68/giomm/themedicon.h
@@ -507,6 +518,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/include/glibmm-2.68/glibmm/unicode.h
 /usr/include/glibmm-2.68/glibmm/uriutils.h
 /usr/include/glibmm-2.68/glibmm/ustring.h
+/usr/include/glibmm-2.68/glibmm/ustring_hash.h
 /usr/include/glibmm-2.68/glibmm/utility.h
 /usr/include/glibmm-2.68/glibmm/value.h
 /usr/include/glibmm-2.68/glibmm/value_basictypes.h
@@ -532,6 +544,9 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libgiomm-2.68.so.1.3.0
+/V3/usr/lib64/libglibmm-2.68.so.1.3.0
+/V3/usr/lib64/libglibmm_generate_extra_defs-2.68.so.1.3.0
 /usr/lib64/libgiomm-2.68.so.1
 /usr/lib64/libgiomm-2.68.so.1.3.0
 /usr/lib64/libglibmm-2.68.so.1
